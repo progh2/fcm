@@ -19,6 +19,7 @@ package com.google.firebase.quickstart.fcm;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -94,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
             }
         });
+
+        IntentFilter filter = new IntentFilter("com.google.firebase.quickstart.fcm.fcm");
+        MyReceiver receiver = new MyReceiver();
+        registerReceiver(receiver, filter);
     }
 
 }
